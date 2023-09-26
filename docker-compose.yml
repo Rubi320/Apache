@@ -1,8 +1,37 @@
-asir_web1:
-image: httpd:2.4
-ports:
-  - "8000,80"
-volumes:
-  - ./paginas:/usr/local/apache2/htdocs
+services: 
+  asir_web1:
+   image: httpd:2.4
+   ports:
+     - "8000:80"
+   volumes:
+      - ./paginas:/usr/local/apache2/htdocs
 
-container_name: asir_web1
+   container_name: asir_web1
+   networks:
+      mynetwork:
+        ipv4_address: 172.28.0.30
+
+   
+  
+  asir_web2:
+   image: httpd:2.4
+   ports:
+     - "9000:80"
+   volumes:
+      - ./paginas:/usr/local/apache2/htdocs
+   networks:
+     mynetwork:
+       ipv4_address: 172.28.0.40
+    
+   container_name: asir_web2
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+
+
+
