@@ -1,15 +1,17 @@
-services: 
-  web1:
-   image: httpd:2.4
-   ports:
-     - 80:80
-   volumes:
-      - ./paginas:/usr/local/apache2/htdocs
-      - ./conf:/usr/local/apache2/conf
-   container_name: web1
-   networks:
-    apache_net:
-      ipv4_address: 172.28.5.20
+version: '3.9'
+services:
+  asir_apache:
+    image: httpd:latest
+    container_name: asir_apache
+    ports:
+    - '80:80'
+    - '8000:8000'
+    networks:
+      apache_net:
+        ipv4_address: 172.24.0.10
+    volumes:
+    - ./paginas:/var/www/html
+    - ./confApache:/etc/apache2
 
   asir_bind9:
     container_name: asir_bind9
@@ -19,23 +21,10 @@ services:
       - 53:53
     networks:
       apache_net:
-        ipv4_address: 172.28.5.1
+        ipv4_address: 172.24.0.20
     volumes:
       - ./conf:/etc/bind
-      - ./zonas:/var/lib/bind
-  
-  asir_cliente:
-    container_name: asir_cliente
-    image: ubuntu
-    networks:
-      apache_net:
-        ipv4_address: 172.28.5.10
-    stdin_open: true # docker run -i
-    tty: true # docker run -t
-    dns:
-      - 172.28.5.1 # el contenedor dns server
-
-
+      - ./zonas:/var/lib/bin
 networks:
   apache_net:
     external: true
