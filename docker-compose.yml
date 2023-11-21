@@ -12,7 +12,8 @@ services:
     volumes:
     - ./paginas:/var/www/html
     - ./confApache:/etc/apache2
-
+    dns:
+    - 172.24.0.20
   asir_bind9:
     container_name: asir_bind9
     image: ubuntu/bind9
@@ -24,7 +25,7 @@ services:
         ipv4_address: 172.24.0.20
     volumes:
       - ./conf:/etc/bind
-      - ./zonas:/var/lib/bin
+      - ./zonas:/var/lib/bind
 networks:
   apache_net:
     external: true

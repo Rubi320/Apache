@@ -1,15 +1,14 @@
-zone "asircastelao.int" {
+zone "www.asir_web1.int" {
 	type master;
-	file "/var/lib/bind/db.asircastelao.int";
+	file "/var/lib/bind/db.asir_web1.int";
 	allow-query {
 		any;
 		};
 	};
-
-zone "tiendadeelectronica.int" {
+zone "www.asir_web2.int" {
 	type master;
-	file "/var/lib/bind/db.tiendadeelectronica.int";
+	file "/var/lib/bind/db.asir_web2.int";
 	allow-query {
 		any;
+		};
 	};
-};
