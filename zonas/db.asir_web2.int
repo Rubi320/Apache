@@ -1,11 +1,11 @@
 $TTL 38400	; 10 hours 40 minutes
-@		IN SOA	ns.asir_web2.int. rubi.email.address. (
+@		IN SOA	ns.asirweb2.int. rubi.email.address. (
 				10000002   ; serial
 				10800      ; refresh (3 hours)
 				3600       ; retry (1 hour)
 				604800     ; expire (1 week)
 				38400      ; minimum (10 hours 40 minutes)
 				)
-@		IN NS	ns
+@		IN NS	ns.asirweb2.int.
 ns		IN A 	172.24.0.20		
 www		IN A 	172.24.0.10
