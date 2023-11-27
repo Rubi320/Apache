@@ -30,3 +30,12 @@
 ### Crear los virtual hosts
 
 *** Debemos definirlos dentro del archivo httpd.conf indicando la raiz de cada servidor y su nombre. ***
+
+### /ect/resolv.conf
+
+*** Dentro de nuestro servidor DNS editamos este fichero resolv.conf y cambiamos el nombre del servidor por 172.24.0.1 ***
+
+### Comprobamos
+
+***Realizamos las comprobaciones haciendo: ***
+    -dig @172.24.0.20 www.asirweb1.int
