@@ -5,4 +5,4 @@ docker-compose
     -definir red
 
 archivos conf DNS : default-zones, conf.local, conf.options
-archivos conf Apache: apache2.conf, mime.types
+archivos conf Apache: httpd.conf, mime.types

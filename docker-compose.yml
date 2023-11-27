@@ -5,13 +5,13 @@ services:
     container_name: asir_apache
     ports:
     - '80:80'
-    - '8000:8000'
+    
     networks:
       apache_net:
         ipv4_address: 172.24.0.10
     volumes:
-    - ./paginas:/var/www/html
-    - ./confApache:/etc/apache2
+    - ./paginas:/usr/local/apache2/htdocs
+    - ./confApache:/usr/local/apache2/conf
     dns:
     - 172.24.0.20
   asir_bind9:
@@ -26,6 +26,19 @@ services:
     volumes:
       - ./conf:/etc/bind
       - ./zonas:/var/lib/bind
+  
+  asir_cliente:
+    container_name: asir_cliente
+    image: ubuntu
+    networks:
+      apache_net:
+        ipv4_address: 172.24.0.30
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    dns:
+      - 172.24.0.20 # el contenedor dns server
+
+  
 networks:
   apache_net:
     external: true
